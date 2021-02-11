@@ -1,4 +1,5 @@
 <script>
+import Question from "./Question.svelte";
 export let quiz = {title:"",questions:[]};
 $: console.log(quiz);
 $: title = quiz.title ||"<Untitled>";
@@ -9,7 +10,7 @@ $: questions = quiz.questions || [];
     <h1>Title:{title}</h1>
     <ul>
         {#each questions as question}
-            <li>{question}</li>
+            <li><Question {...question}/> </li>
         {/each}
     </ul>
 </div>
