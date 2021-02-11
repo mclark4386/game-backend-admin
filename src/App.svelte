@@ -53,11 +53,13 @@
 </script>
 
 {#if !loggedIn}
+<main>
   <input placeholder="Email" />
   <br />
   <input placeholder="Password" type="password" />
   <br />
   <button on:click={() => (loggedIn = !loggedIn)}>Login</button>
+</main>
 {:else}
   <main>
     <h1>Svelte + Node.js API</h1>
