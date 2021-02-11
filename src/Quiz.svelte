@@ -1,7 +1,7 @@
 <script>
 export let quiz = {title:"",questions:[]};
-$: title = quiz[title] !== undefined ? quiz[title]:"<Untitled>";
-$: questions = quiz[questions] !== undefined ? quiz[questions]:[];
+$: title = quiz[title] ||"<Untitled>";
+$: questions = quiz[questions] || [];
 </script>
 
 <div>
