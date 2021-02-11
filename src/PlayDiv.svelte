@@ -1,7 +1,8 @@
 <script>
-let m;
+let m = {x:0,y:0};
 function handleMousemove(e){
-    m = e
+    m.x = e.offsetX
+    m.y = e.offsetY
 }
 </script>
 
