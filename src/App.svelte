@@ -53,7 +53,7 @@
 </script>
 
 {#if !loggedIn}
-<main>
+<main style="max-width:25%;">
   <input placeholder="Email" />
   <br />
   <input placeholder="Password" type="password" />
