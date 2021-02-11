@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import QuizList from "./QuizList.svelte";
+  import PlayDiv from "./PlayDiv.svelte";
 
   let datePromise;
   let errorPromise;
@@ -61,6 +62,7 @@
   <main>
     <h1>Svelte + Node.js API</h1>
     <button on:click={() => (loggedIn = !loggedIn)}>Logout</button>
+    <PlayDiv/>
     <h2>
       Deployed with
       <a
@@ -111,7 +113,6 @@
     {:then date}
       <p>{date ? date : 'Loading error...'}</p>
     {:catch error}
-      {console.log(error)}
       <p style="color: red">({error}){error.message}</p>
     {/await}
 
