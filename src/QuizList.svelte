@@ -6,7 +6,7 @@ let title = "";
 let questions = [];
 
 function AddNewQuiz(){
-    quizzes = [...quizzes, {title, questions}];
+    quizzes = [...quizzes, {title: title, questions: questions}];
 }
 
 function handleAddClick(){
