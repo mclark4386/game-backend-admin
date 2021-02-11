@@ -56,6 +56,7 @@
 {:else}
 <main>
   <h1>Svelte + Node.js API</h1>
+  <button on:click={()=>loggedIn = !loggedIn}>Logout</button>
   <h2>
     Deployed with
     <a href="https://vercel.com/docs" target="_blank" rel="noreferrer noopener">
