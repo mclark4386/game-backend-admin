@@ -123,6 +123,6 @@
       <i>int({version})</i>
     </p>
     <p>Total Quizzes: {quizzes.length}</p>
-    <QuizList {quizzes} />
+    <QuizList bind:quizzes={quizzes} />
   </main>
 {/if}
