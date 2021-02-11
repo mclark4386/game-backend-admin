@@ -22,8 +22,18 @@
   function handleClick(){
     version += 1;
   }
-  function refresh() {
-    datePromise = fetch("/api/date");
+  async function refreshDate() {
+    const res = await fetch("/api/date");
+    const text = await res.text();
+
+		if (res.ok) {
+			return text;
+		} else {
+			throw new Error(text);
+		}
+  }
+  function refresh(){
+    datePromise = refreshDate();
   }
 </script>
 
@@ -70,8 +80,7 @@
   {#await datePromise}
     <p>...loading date</p>
   {:then date}
-    {console.log(date)}
-    <p>{date&&date.text() ? date.text() : 'Loading date...'}</p>
+    <p>{date ? date : 'Loading date...'}</p>
   {:catch error}
     <p style="color: red">{error.message}</p>
   {/await}
