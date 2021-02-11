@@ -17,7 +17,7 @@ function handleAddClick(){
 <div style="outline:solid;">
     <input placeholder="Title" bind:value={title}/>
 
-    <button on:click={()=>AddNewQuiz(title,questions)}>Add New Quiz</button>
+    <button on:click={handleAddClick}>Add New Quiz</button>
 </div>
 
 <ul>
