@@ -3,6 +3,7 @@
   import QuizList from "./QuizList.svelte";
 
   let datePromise;
+  let errorPromise;
 
   let loggedIn = false;
 
@@ -32,8 +33,19 @@
 			throw new Error(text);
 		}
   }
+  async function refreshError() {
+    const res = await fetch("/api/error");
+    const text = await res.text();
+
+		if (res.ok) {
+			return text;
+		} else {
+			throw new Error(text);
+		}
+  }
   function refresh(){
     datePromise = refreshDate();
+    errorPromise = refreshError();
   }
 </script>
 
@@ -81,6 +93,15 @@
     <p>...loading date</p>
   {:then date}
     <p>{date ? date : 'Loading date...'}</p>
+  {:catch error}
+    <p style="color: red">{error.message}</p>
+  {/await}
+<br/>
+Error:
+  {#await errorPromise}
+    <p>...loading error</p>
+  {:then date}
+    <p>{date ? date : 'Loading error...'}</p>
   {:catch error}
     <p style="color: red">{error.message}</p>
   {/await}
