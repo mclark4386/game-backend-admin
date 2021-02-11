@@ -7,6 +7,12 @@
     const newDate = await res.text();
     date = newDate;
   });
+
+  let version = 0;
+
+  function handleClick(){
+    version += 1;
+  }
 </script>
 
 <main>
@@ -45,4 +51,6 @@
   <br />
   <h2>The date according to Node.js is:</h2>
   <p>{date ? date : 'Loading date...'}</p>
+
+  <p><b><button on:click={handleClick}>Version:</button></b><i>{version}</i></p>
 </main>
