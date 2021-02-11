@@ -103,7 +103,8 @@ Error:
   {:then date}
     <p>{date ? date : 'Loading error...'}</p>
   {:catch error}
-    <p style="color: red">({@debug error}){error.message}</p>
+    {console.log(error)}
+    <p style="color: red">({error}){error.message}</p>
   {/await}
 
   <p><b><button on:click={handleClick}>{labeledVersion}</button></b>  <i>int({version})</i></p>
