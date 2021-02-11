@@ -21,8 +21,15 @@ function addRow() {
     <ul>
         {#each questions as question,i (question.id)}
             <li>
-                <b>{i}</b>
-                <input placeholder="Question" bind:value={question.text}/><br/>
+                <input placeholder="ID" bind:value={question.id}/>
+                <input placeholder="Question" bind:value={question.text}/>
+                <br/>
+                {#each question.answers as answer, j (j)}
+                    {#if j == question.correct_answer}(Answer){/if}
+                    <input placeholder={"Answer"+j} bind:value={answer}/>
+                    <button on:click={()=>question.correct_answer = j}>Set this as correct answer.</button>
+                {/each}
+                <button on:click={()=>question.answers = [...question.answers,""]}>Add Answer</button>
             </li>
         {/each}
     </ul>
