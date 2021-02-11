@@ -1,7 +1,8 @@
 <script>
   import { onMount } from "svelte";
   import QuizList from "./QuizList.svelte";
-  export let date;
+
+  let datePromise;
 
   let loggedIn = false;
 
@@ -22,9 +23,7 @@
     version += 1;
   }
   async function refresh() {
-    const res = await fetch("/api/date");
-    const newDate = await res.text();
-    date = newDate;
+    datePromise = await fetch("/api/date");
   }
 </script>
 
@@ -68,7 +67,13 @@
   </p>
   <br />
   <h2 on:click={refresh}>The date according to Node.js is:</h2>
-  <p>{date ? date : 'Loading date...'}</p>
+  {#await datePromise}
+    <p>...loading date</p>
+  {:then date}
+    <p>{date ? date : 'Loading date...'}</p>
+  {:catch error}
+    <p style="color: red">{error.message}</p>
+  {/await}
 
   <p><b><button on:click={handleClick}>{labeledVersion}</button></b>  <i>int({version})</i></p>
   <p>Total Quizzes: {quizzes.length}</p>
