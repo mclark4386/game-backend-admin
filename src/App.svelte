@@ -70,7 +70,7 @@
   {#await datePromise}
     <p>...loading date</p>
   {:then date}
-    {console.log(date);}
+    {console.log(date)}
     <p>{date&&date.text ? date.text : 'Loading date...'}</p>
   {:catch error}
     <p style="color: red">{error.message}</p>
