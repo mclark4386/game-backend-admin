@@ -1,11 +1,14 @@
 <script>
   import { onMount } from "svelte";
+  import QuizList from "./QuizList.svelte";
   export let date;
 
+  let loggedIn = false;
+
+  let quizzes = [];
+
   onMount(async () => {
-    const res = await fetch("/api/date");
-    const newDate = await res.text();
-    date = newDate;
+    refresh();
   });
 
   let version = 0;
@@ -18,8 +21,21 @@
   function handleClick(){
     version += 1;
   }
+  async function refresh() {
+    const res = await fetch("/api/date");
+    const newDate = await res.text();
+    date = newDate;
+  }
 </script>
 
+{#if loggedIn}
+  Logged In 
+{/if}
+{#if !loggedIn}
+  <input placeholder="Email"/> <br/>
+  <input placeholder="Password" type="password"/> <br/>
+  <button on:click={()=>loggedIn = !loggedIn}>Login</button>
+{/if}
 <main>
   <h1>Svelte + Node.js API</h1>
   <h2>
@@ -54,8 +70,10 @@
     .
   </p>
   <br />
-  <h2>The date according to Node.js is:</h2>
+  <h2 on:click={refresh}>The date according to Node.js is:</h2>
   <p>{date ? date : 'Loading date...'}</p>
 
   <p><b><button on:click={handleClick}>{labeledVersion}</button></b>  <i>int({version})</i></p>
+  <p>Total Quizzes: {quizzes.length}</p>
+  <QuizList {quizzes}/>
 </main>
