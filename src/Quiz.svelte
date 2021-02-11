@@ -1,5 +1,6 @@
 <script>
 export let quiz = {title:"",questions:[]};
+$: console.log(quiz);
 $: title = quiz[title] ||"<Untitled>";
 $: questions = quiz[questions] || [];
 </script>

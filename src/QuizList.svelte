@@ -22,7 +22,7 @@ function handleAddClick(){
 
 <ul>
     {#each quizzes as quiz}
-        {@debug quiz}
+        {@debug quiz[title]}
         {console.log(quiz)}
         <Quiz {quiz}/>
     {/each}
