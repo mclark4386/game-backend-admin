@@ -11,7 +11,7 @@ function AddNewQuiz(newTitle, newQuestions){
 
 function handleAddClick(){
     console.log("would be using title:", title);
-    AddNewQuiz("New Quiz", [{question:"What is your favorite color?"}]);
+    AddNewQuiz(title, [{question:"What is your favorite color?"}]);
 }
 </script>
 
