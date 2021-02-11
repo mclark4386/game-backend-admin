@@ -37,10 +37,12 @@
     const res = await fetch("/api/error");
     const text = await res.text();
 
+    console.log(res);
+
     if (res.ok) {
       return text;
     } else {
-      throw new Error("(" + res.code + "): " + text);
+      throw new Error("(" + res.status + "): " + text);
     }
   }
   function refresh() {
