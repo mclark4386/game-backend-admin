@@ -9,6 +9,11 @@
   });
 
   let version = 0;
+  $: labeledVersion = "Version:"+version;
+
+  $: if(version >= 10){
+    alert("Welcome to a new world!");
+  }
 
   function handleClick(){
     version += 1;
@@ -52,5 +57,5 @@
   <h2>The date according to Node.js is:</h2>
   <p>{date ? date : 'Loading date...'}</p>
 
-  <p><b><button on:click={handleClick}>Version:</button></b><i>{version}</i></p>
+  <p><b><button on:click={handleClick}>{labeledVersion}</button></b>  <i>int({version})</i></p>
 </main>
