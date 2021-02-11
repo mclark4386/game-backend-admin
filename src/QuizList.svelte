@@ -1,25 +1,17 @@
 <script>
 import Quiz from "./Quiz.svelte";
+import QuizForm from "./QuizForm.svelte";
 export let quizzes = [];
 
-let title = "";
-let questions = [];
 
-function AddNewQuiz(newTitle, newQuestions){
+function AddNewQuiz(event){
+    let newTitle = event.detail.title;
+    let newQuestions = event.detail.questions;
     quizzes = [...quizzes, {title: newTitle, questions: newQuestions}];
-}
-
-function handleAddClick(){
-    console.log("would be using title:", title);
-    AddNewQuiz(title, [{question:"What is your favorite color?"}]);
 }
 </script>
 
-<div style="outline:solid;">
-    <input placeholder="Title" bind:value={title}/>
-
-    <button on:click={handleAddClick}>Add New Quiz</button>
-</div>
+<QuizForm on:add={AddNewQuiz}/>
 
 <ul>
     {#each quizzes as quiz}
