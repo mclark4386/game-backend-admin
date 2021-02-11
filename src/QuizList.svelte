@@ -5,12 +5,13 @@ export let quizzes = [];
 let title = "";
 let questions = [];
 
-function AddNewQuiz(){
-    quizzes = [...quizzes, {title: title, questions: questions}];
+function AddNewQuiz(newTitle, newQuestions){
+    quizzes = [...quizzes, {title: newTitle, questions: newQuestions}];
 }
 
 function handleAddClick(){
-    AddNewQuiz("New Quiz", [{question:"What is your favorite color?"}])
+    console.log("would be using title:", title);
+    AddNewQuiz("New Quiz", [{question:"What is your favorite color?"}]);
 }
 </script>
 
