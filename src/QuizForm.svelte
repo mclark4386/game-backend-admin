@@ -1,7 +1,7 @@
 <script>
 import { createEventDispatcher } from "svelte";
 let title = "";
-let questions = [{id: "", text: "",answers: [""], correct_answer:0}];
+let questions = [{id: "Q1", text: "",answers: [""], correct_answer:0}];
 
 const dispatch = createEventDispatcher();
 
@@ -11,7 +11,7 @@ function handleAddClick() {
 }
 
 function addRow() {
-    questions = [...questions, {id: "", text: "",answers: [""], correct_answer:0}];
+    questions = [...questions, {id: "Q"+(questions.length+1), text: "",answers: [""], correct_answer:0}];
 }
 
 </script>
