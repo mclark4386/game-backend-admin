@@ -19,8 +19,9 @@ function addRow() {
 <div style="outline:solid;">
     <input placeholder="Title" bind:value={title}/><br/>
     <ul>
-        {#each questions as {id,question} (question.id)}
+        {#each questions as question,i (question.id)}
             <li>
+                <b>{i}</b>
                 <input placeholder="Question" bind:value={question.text}/><br/>
             </li>
         {/each}
