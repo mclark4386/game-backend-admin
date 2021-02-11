@@ -22,8 +22,8 @@
   function handleClick(){
     version += 1;
   }
-  async function refresh() {
-    datePromise = await fetch("/api/date");
+  function refresh() {
+    datePromise = fetch("/api/date");
   }
 </script>
 
