@@ -28,14 +28,11 @@
   }
 </script>
 
-{#if loggedIn}
-  Logged In 
-{/if}
 {#if !loggedIn}
   <input placeholder="Email"/> <br/>
   <input placeholder="Password" type="password"/> <br/>
   <button on:click={()=>loggedIn = !loggedIn}>Login</button>
-{/if}
+{:else}
 <main>
   <h1>Svelte + Node.js API</h1>
   <h2>
@@ -77,3 +74,5 @@
   <p>Total Quizzes: {quizzes.length}</p>
   <QuizList {quizzes}/>
 </main>
+
+{/if}

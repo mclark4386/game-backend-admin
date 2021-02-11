@@ -1,4 +1,5 @@
 <script>
+import Quiz from "./Quiz.svelte";
 export let quizzes = [];
 
 function AddNewQuiz(title, questions){
@@ -10,3 +11,8 @@ function handleAddClick(){
 }
 </script>
 
+<ul>
+    {#each quizzes as quiz}
+        <Quiz {quiz}/>
+    {/each}
+</ul>
